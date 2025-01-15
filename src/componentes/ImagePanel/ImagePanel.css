@@ -1,0 +1,27 @@
+.containersub {
+  text-align: left;
+}
+
+.h2conteiner {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: url('../../imagenes/wallapaper.png') center/cover no-repeat;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.panel-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Aplicar estilos específicos para pantallas más pequeñas (ej. móviles) */
+@media screen and (max-width: 768px) {
+  .h2conteiner {
+    text-align: center; /* Centrar el texto en pantallas más pequeñas */
+  }
+
+  /* Puedes ajustar otros estilos específicos para pantallas más pequeñas aquí */
+}

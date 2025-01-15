@@ -1,0 +1,351 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html, 
+body {
+  font-size: 18px;
+  background-color: rgb(255, 255, 255);
+}
+
+h2 {
+  font-family: 'Oswald', sans-serif;
+  /* Otros estilos para h2, como color, tamaño de fuente, etc. */
+}
+
+h4 {
+  font-family: 'Oswald', sans-serif;
+  /* Otros estilos para h4, como color, tamaño de fuente, etc. */
+}
+
+h5 {
+  font-family: 'Oswald', sans-serif;
+  /* Otros estilos para h4, como color, tamaño de fuente, etc. */
+}
+
+.titulos {
+  align-content: center;
+  margin-top: 20px;
+  color: #0441b3;
+  font-size: 10px;
+}
+
+.App{
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contenedor-principal{
+  min-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  text-align: center; /* Para centrar la imagen horizontalmente */
+}
+
+.image-container img {
+  max-width: 100%; /* La imagen se ajustará al ancho del contenedor */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
+}
+
+.card-container {
+  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.navbar {
+  font-size: 16px;
+  font-family: Lato, sans-serif;
+  width: 100%;
+  height: auto; /* Cambia de 90px a auto */
+  text-align: center;
+}
+
+
+
+.navbar-toggler-icon {
+  color: white; /* Cambia el color del icono de la hamburguesa */
+}
+
+.navbar-brand {
+  margin-right: 0; /* Ajusta el margen derecho según tus necesidades */
+}
+
+.navbar-nav {
+  text-align: center; /* Centra los elementos en dispositivos móviles */
+}
+
+.navbar-collapse {
+  justify-content: center; /* Centra el contenido del navbar en dispositivos móviles */
+}
+
+.navbar-toggler {
+  border: none; /* Elimina el borde del botón de la hamburguesa */
+  outline: none; /* Elimina el contorno del botón de la hamburguesa */
+}
+
+.custom-bg {
+  background-color: #141a4e;
+}
+
+/* Agrega un estilo para el fondo del menú desplegable */
+.navbar-collapse {
+  background-color: #141a4e;
+  padding-top: 10px; /* Espaciado superior en el menú desplegable */
+  padding-bottom: 10px; /* Espaciado inferior en el menú desplegable */
+}
+
+.navbar-nav .nav-link {
+  padding: 10px 15px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 16px;
+}
+
+/* Agrega un estilo para el enlace activo en el menú */
+.navbar-nav .nav-item .nav-link.active {
+  color: #ffffff; /* Cambia el color del enlace activo */
+}
+
+/* Ajusta los estilos para dispositivos más pequeños */
+@media (max-width: 767px) {
+  .navbar-toggler {
+    margin-top: 5px; /* Ajusta el espacio superior del botón de la hamburguesa */
+  }
+}
+
+.navbar-logo {
+  width: 150px; /* Ajusta el ancho según tus necesidades */
+  height: auto; /* Esto mantiene la proporción original de la imagen */
+  margin-right: 10px; /* Ajusta el margen derecho según tus necesidades */
+}
+
+/* Puedes agregar estilos específicos para el NavDropdown */
+.navbar-nav .nav-link {
+  padding: 10px 15px; /* Ajusta el espaciado interno según tus necesidades */
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 16px; /* Ajusta el tamaño del texto según tus necesidades */
+}
+
+/* navbar.css */
+.custom-bg {
+  background-color: #141a4e; /* Cambia esto al color que desees */
+}
+
+
+/* navbar.css */
+
+
+/* CSS de la clase componentes*/
+
+.body-styling {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.componente {
+  width: 30%;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.componente img {
+  width: 100%;
+  height: auto; /* Cambiado a 'auto' para mantener la proporción de la imagen */
+  display: block;
+}
+
+.componente .descripcion {
+  padding: 15px;
+}
+
+.componente .Subtitulos {
+  font-family: 'Oswald', sans-serif;
+  color: #004070;
+  padding: 15px;
+  text-align: center;
+}
+
+.componenteSO {
+  width: 45%;
+  margin: 35px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: 30%;
+}
+
+.componenteSO img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.componenteSO .descripcion {
+  padding: 100px;
+  /* background-color: #f4f4f4; */
+}
+
+@media screen and (max-width: 768px) {
+  .componenteSO {
+    flex: 100%; /* Take up the full width on smaller screens */
+  }
+}
+
+.componente .Subtitulos {
+  font-family: 'Oswald', sans-serif;
+  color: #004070;
+  padding: 15px;
+  text-align: center; /* Para centrar el texto */
+}
+
+.body-stylingSO {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.componenteSO {
+  width: 45%;
+  margin: 35px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.componenteSO img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.componenteSO .descripcion {
+  padding: 100px;
+  /* background-color: #f4f4f4; */
+}
+
+@media screen and (max-width: 768px) {
+  .componenteSO {
+    flex: 100%;
+    padding: 10px; /* Take up the full width on smaller screens */
+  }
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 10px; /* Ajusta el valor según el espacio que quieras entre los iconos */
+}
+
+
+.ProgEmpConteiener {
+  max-width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ProgEmpConteiener p {
+  margin-bottom: 15px;
+}
+
+.ProgEmpConteiener img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 15px;
+}
+
+.linkPE, .ProgEmpConteiener a {
+  margin-top: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .ProgEmpConteiener {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+.Qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Asegúrate de centrar el texto dentro del div */
+}
+
+.Qr img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px; /* Ajusta según sea necesario */
+}
+
+.linkPE {
+  display: block;
+  margin-top: 10px; /* Ajusta según sea necesario */
+}
+
+/*PAra la pagina de feria*/
+.FeriaConteiner {
+  max-width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: justify; /* Ajusta el texto justificado */
+}
+
+.FeriaConteiner p {
+  margin-bottom: 15px;
+  font-size: 18px; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+.FeriaConteiner iframe {
+  display: block;
+  margin: 0 auto; /* Centra el video horizontalmente */
+  max-width: 100%;
+
+}
+
+.imagencover {
+  text-align: center;
+  margin-top: 20px; /* Ajusta según sea necesario */
+}
+
+.imagencover img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .FeriaConteiner {
+    max-width: 100%;
+    padding: 10px;
+  }
+  /**/
+}
+
+

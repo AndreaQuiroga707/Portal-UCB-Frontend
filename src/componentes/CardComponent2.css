@@ -1,0 +1,57 @@
+/* CardComponent2.css */
+
+.custom-card-header {
+    color: white;
+    font-size: 1rem; /* Reduce el tamaño de la fuente del encabezado */
+    /* ... otros estilos ... */
+  }
+  
+  .lista-carreras {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    /* ... otros estilos ... */
+  }
+  
+  .lista-carreras li {
+    padding: 0.5rem; /* Ajusta el espaciado */
+    transition: background-color 0.3s, color 0.3s; /* Anima el cambio de color */
+    /* ... otros estilos ... */
+  }
+  
+  /* Aplica los estilos de hover aquí */
+  .lista-carreras li:hover {
+    color: white; /* Texto en blanco para contraste */
+    cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+  }
+  
+  /* Colores de fondo específicos por facultad para el encabezado y el efecto hover de cada item */
+  .facultad-economia .custom-card-header, .facultad-economia .lista-carreras li:hover {
+    background-color: #004aad; /* Azul */
+  }
+  
+  .facultad-ingenieria .custom-card-header, .facultad-ingenieria .lista-carreras li:hover {
+    background-color: #008000; /* Verde */
+  }
+  
+  .facultad-sociales .custom-card-header, .facultad-sociales .lista-carreras li:hover {
+    background-color: #FFC107; /* Amarillo */
+  }
+  
+  .facultad-arquitectura .custom-card-header, .facultad-arquitectura .lista-carreras li:hover {
+    background-color: rgb(4, 131, 122); /* Púrpura */
+  }
+  
+  .facultad-derecho .custom-card-header, .facultad-derecho .lista-carreras li:hover {
+    background-color: #f57207; /* Naranja */
+  }
+  
+  .facultad-medicina .custom-card-header, .facultad-medicina .lista-carreras li:hover {
+    background-color: #0792ee; /* Celeste */
+  }
+  
+  .lista-carreras li {
+    padding: 0.5rem; /* Ajusta el espaciado */
+    transition: background-color 0.3s, color 0.3s; /* Anima el cambio de color */
+    /* ... otros estilos ... */
+  }

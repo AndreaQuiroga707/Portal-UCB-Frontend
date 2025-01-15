@@ -1,0 +1,20 @@
+/* InvestigacionAdmin.css */
+
+.contenedor-principal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .card-container {
+    margin: 10px;
+  }
+  
+  .titulos {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Agrega más estilos según sea necesario */
+  

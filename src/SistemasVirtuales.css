@@ -1,0 +1,103 @@
+/* ... (Otros estilos del archivo app.css) */
+
+/* Estilos específicos de SistemasVirtuales */
+.secciones {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.SistemasVirtuales {
+    font-family: 'Oswald', sans-serif;
+    color: #004070;
+    padding: 10px;
+    padding-left: 100px;
+    text-align: left;
+}
+
+.svimage {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-wrap: wrap; /* Añadir esta línea para permitir el ajuste de columnas */
+}
+
+.svimage img {
+    width: 250px;
+    height: 250px;
+    transition: filter 0.3s ease-in-out;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.separador {
+    border-top: 5px solid #3498db;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+
+.svimage img:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .svimage img {
+        margin-bottom: 10px;
+    }
+}
+
+#second-set {
+    display: none;
+}
+
+#second-set-administrativo {
+    display: none;
+}
+
+.show-more-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.show-more-button2 {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.new-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 0; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.3s ease-in-out;
+}
+
+.new-button img {
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.new-button:hover img {
+    filter: brightness(80%);
+}
+
+/* ... (Estilos posteriores) */
