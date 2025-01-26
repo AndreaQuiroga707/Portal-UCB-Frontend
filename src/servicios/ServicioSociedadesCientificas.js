@@ -14,4 +14,8 @@ export class ServicioSociedadesCientificas {
     putSociedadCientifica(sociedadCientifica) {
         return axios.put(this.baseUrl + "sociedades/cientificas/", sociedadCientifica).then(res => res.data);
     }
+
+    deleteSociedadCientifica(id) {
+        return axios.delete(this.baseUrl + `sociedades/cientificas/${id}`).then(res => res.data);
+    }
 }

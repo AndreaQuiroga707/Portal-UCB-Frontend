@@ -16,7 +16,7 @@ import FooterComponent from './componentes/FooterComponent';
 import ProgramaEmpleabilidad from './paginas/ProgramaEmpleabilidad';
 import FeriaEmpleo from './paginas/FeriaEmpleo';
 import CareerView from './paginas/CareerView';
-import { Navigate } from 'react-router-dom';
+import LoginPage from "./paginas/LoginPage"; // Página de login
 
 function App() {
   return (
@@ -54,6 +54,7 @@ function App() {
         <Route path="/portal-egresados" element={<PortalEgresados />} />
         <Route path="/programa-empleabilidad" element={<ProgramaEmpleabilidad />} />
         <Route path="/feria-empleo" element={<FeriaEmpleo />} />
+        <Route path="/login" element={<LoginPage />} /> {/* Página de login */}
         <Route path="*" element={<h1>404: Not Found</h1>} />
 
         {/* Rutas específicas de administración */}

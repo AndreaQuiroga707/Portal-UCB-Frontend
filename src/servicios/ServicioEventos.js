@@ -14,4 +14,8 @@ export class ServicioEventos {
   putEvento(evento) {
     return axios.put(this.baseUrl + "eventos/", evento).then((res) => res.data);
   }
+
+  deleteEvento(id) {
+    return axios.delete(this.baseUrl + `eventos/${id}`).then((res) => res.data);
+  }
 }

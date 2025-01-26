@@ -14,4 +14,7 @@ export class ServicioNoticias {
   putNoticia(noticia) {
     return axios.put(this.baseUrl + "noticias/", noticia).then((res) => res.data);
   }
+  deleteNoticia(id) {
+    return axios.delete(this.baseUrl + `noticias/${id}`).then((res) => res.data);
+  }
 }

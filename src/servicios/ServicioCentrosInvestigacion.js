@@ -14,4 +14,8 @@ export class ServicioCentrosInvestigacion {
     putCentroInvestigacion(institutoInvestigacion) {
         return axios.put(this.baseUrl + "centros/investigaciones/", institutoInvestigacion).then(res => res.data);
     }
+
+    deleteCentroInvestigacion(id) {
+        return axios.delete(this.baseUrl + `centros/investigaciones/${id}`).then(res => res.data);
+    }
 }
