@@ -8,16 +8,15 @@ import "./Tabla.css"; // Estilos para la tabla
 const GestionUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [mensaje, setMensaje] = useState("");
+  const [tienePermiso, setTienePermiso] = useState(true); // Estado para verificar permisos
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Token desde localStorage:", localStorage.getItem("token"));
-    console.log("Rol del usuario:", verificarRol("GESTOR DE USUARIOS"));
-
     // Verificar si el usuario tiene permisos
     if (!verificarRol("GESTOR DE USUARIOS")) {
-      setMensaje("No tienes permisos para acceder a esta página. Redirigiendo al login...");
-      setTimeout(() => navigate("/login"), 3000);
+      setTienePermiso(false); // No tiene permiso
+      setMensaje("No tienes permisos para acceder a esta página.");
+      setTimeout(() => navigate("/login"), 3000); // Redirige al login después de 3 segundos
       return;
     }
 
@@ -36,6 +35,16 @@ const GestionUsuarios = () => {
 
     fetchUsuarios();
   }, [navigate]);
+
+  if (!tienePermiso) {
+    // Si no tiene permiso, solo muestra el mensaje de acceso denegado
+    return (
+      <div className="no-access-container">
+        <h1>{mensaje}</h1>
+        <p>Redirigiendo al login...</p>
+      </div>
+    );
+  }
 
   return (
     <div>

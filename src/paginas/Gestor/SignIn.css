@@ -114,3 +114,69 @@
     text-align: center;
   }
   
+  .no-access-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    color: #d9534f; /* Rojo */
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-access-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .no-access-container p {
+    font-size: 1rem;
+    color: #777;
+  }
+
+  /* Estilo general para los inputs */
+.input-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para el label */
+  .input-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Estilo para el campo de selección (select) */
+  .input-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none; /* Oculta la flecha predeterminada */
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Cambiar el borde del select al enfocarlo */
+  .input-group select:focus {
+    border-color: #28a745; /* Color de borde al enfocarse */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Efecto de sombra */
+  }
+  
+  /* Estilo para la opción seleccionada */
+  .input-group select option {
+    font-size: 14px;
+  }
+  
+  /* Estilo adicional para los errores */
+  .error-message {
+    color: #ff4d4d; /* Rojo */
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

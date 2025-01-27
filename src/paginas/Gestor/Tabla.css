@@ -50,3 +50,25 @@
     color: white;
   }
   
+
+  .no-access-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    color: #d9534f; /* Rojo */
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-access-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .no-access-container p {
+    font-size: 1rem;
+    color: #777;
+  }
+  

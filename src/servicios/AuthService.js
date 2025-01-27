@@ -11,13 +11,14 @@ export const login = async (correoElectronico, password) => {
 };
 
 // Función para registrar usuarios (Sign In)
-export const signIn = async ({ nombre, apellido, correoElectronico, password }) => {
+export const signIn = async ({ nombre, apellido, correoElectronico, password, rol}) => {
   try {
     const response = await api.post("/nuevo", { 
       nombre, 
       apellido, 
       correoElectronico, 
-      password 
+      password,
+      rol
     });
     return response.data; // Devuelve un mensaje de éxito o los datos del usuario creado
   } catch (error) {
@@ -33,4 +34,15 @@ export const getUsuarios = async () => {
   } catch (error) {
     throw error.response?.data?.message || "Error al obtener usuarios";
   }
+};
+
+
+export const requestResetToken = async (email) => {
+  const response = await api.post("/new/token", email);
+  return response.data;
+};
+
+export const resetPasswordWithToken = async (data) => {
+  const response = await api.post("/new/token/password", data);
+  return response.data;
 };
