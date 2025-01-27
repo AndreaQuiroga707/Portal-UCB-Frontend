@@ -1,0 +1,116 @@
+/* Contenedor principal de la página Crear Cuenta */
+.crear-cuenta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-image: url('../../imagenes/panel.png'); /* Imagen de fondo */
+    background-size: cover; /* La imagen cubre todo */
+    background-position: center; /* Centrada */
+    background-repeat: no-repeat; /* No se repite */
+    position: relative; /* Para que la capa negra esté sobre el fondo */
+  }
+  
+  /* Capa semitransparente negra sobre la imagen */
+  .crear-cuenta-container::before {
+    content: ""; /* Capa adicional */
+    position: absolute; /* Posición absoluta para cubrir el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Negro semitransparente */
+    z-index: 1; /* Asegura que esté por encima del fondo pero debajo del contenido */
+  }
+  
+  /* Contenido del formulario (por encima de la capa negra) */
+  form {
+    position: relative; /* Para que esté por encima de la capa negra */
+    z-index: 2; /* Eleva el formulario sobre la capa negra */
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    color: #000000; /* Texto negro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Logo */
+  .logo {
+    position: relative; /* Asegura que esté por encima de la capa negra */
+    z-index: 2;
+    width: 320px;
+    height: 320px;
+    margin-bottom: -15px;
+    margin-top: 80px;
+  }
+  
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Títulos */
+  h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: white; /* Blanco para destacar sobre la capa negra */
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Campos de entrada */
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .input-group input:focus {
+    border-color: #004488; /* Color de enfoque */
+  }
+  
+  /* Botón de registrar */
+  .botonLogin {
+    background-color: #004488; /* Azul oscuro */
+    color: white; /* Texto blanco */
+    font-size: 1rem; /* Tamaño de fuente */
+    padding: 10px; /* Relleno */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo mano */
+    transition: background-color 0.3s ease; /* Efecto de hover */
+    width: 100%; /* Ocupa todo el ancho del formulario */
+    box-sizing: border-box;
+    margin-top: 25px; /* Espaciado superior */
+  }
+  
+  .botonLogin:hover {
+    background-color: #003366; /* Azul más oscuro al pasar el cursor */
+  }
+  
+  /* Mensajes de error */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  

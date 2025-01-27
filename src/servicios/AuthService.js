@@ -9,3 +9,28 @@ export const login = async (correoElectronico, password) => {
     throw error.response?.data?.mensaje || "Error de autenticación";
   }
 };
+
+// Función para registrar usuarios (Sign In)
+export const signIn = async ({ nombre, apellido, correoElectronico, password }) => {
+  try {
+    const response = await api.post("/nuevo", { 
+      nombre, 
+      apellido, 
+      correoElectronico, 
+      password 
+    });
+    return response.data; // Devuelve un mensaje de éxito o los datos del usuario creado
+  } catch (error) {
+    throw error.response?.data?.mensaje || "Error al registrar el usuario";
+  }
+};
+
+// Función para obtener usuarios
+export const getUsuarios = async () => {
+  try {
+    const response = await api.get("/"); // Llama a la ruta protegida
+    return response.data.data; // Devuelve solo la lista de usuarios
+  } catch (error) {
+    throw error.response?.data?.message || "Error al obtener usuarios";
+  }
+};

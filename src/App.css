@@ -118,6 +118,15 @@ h5 {
   color: #ffffff; /* Cambia el color del enlace activo */
 }
 
+.social-icons .navbar-icon svg {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icons .navbar-icon:hover svg {
+  color: #ccc;
+}
+
 /* Ajusta los estilos para dispositivos más pequeños */
 @media (max-width: 767px) {
   .navbar-toggler {

@@ -17,6 +17,8 @@ import ProgramaEmpleabilidad from './paginas/ProgramaEmpleabilidad';
 import FeriaEmpleo from './paginas/FeriaEmpleo';
 import CareerView from './paginas/CareerView';
 import LoginPage from "./paginas/LoginPage"; // Página de login
+import GestionUsuarios from './paginas/Gestor/GestionUsuarios';
+import CrearCuenta from './paginas/Gestor/CrearCuenta';
 
 function App() {
   return (
@@ -60,6 +62,10 @@ function App() {
         {/* Rutas específicas de administración */}
         <Route path="/admin" element={<InicioAdmin />} />
         <Route path="/admin/investigacion" element={<InvestigacionAdmin />} />
+
+         {/* Rutas específicas del Gestor */}
+        <Route path="/gestor/usuarios" element={<GestionUsuarios />} />
+        <Route path="/gestor/crear-cuenta" element={<CrearCuenta />} />
       </Routes>
 
       <FooterComponent />
