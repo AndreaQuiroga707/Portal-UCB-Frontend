@@ -19,6 +19,7 @@ import CareerView from './paginas/CareerView';
 import LoginPage from "./paginas/LoginPage"; // Página de login
 import GestionUsuarios from './paginas/Gestor/GestionUsuarios';
 import CrearCuenta from './paginas/Gestor/CrearCuenta';
+import EditarUsuario from "./componentes/EditarUsuario";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/portal-egresados" element={<NavbarComponent />} />
         <Route path="/programa-empleabilidad" element={<NavbarComponent />} />
         <Route path="/feria-empleo" element={<NavbarComponent />} />
+        <Route path="/editar-usuario/:id" element={<EditarUsuario />} />
       </Routes>
 
       {/* Navbar para sección de administración */}
