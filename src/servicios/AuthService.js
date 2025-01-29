@@ -79,3 +79,45 @@ export const deleteUsuario = async (id) => {
     throw error;
   }
 };
+
+// EVENTOS
+
+// Función para obtener todos los eventos
+export const getEventos = async () => {
+  try {
+    const response = await api.get("/eventos"); // Ruta para listar eventos
+    return response.data.data; // Devuelve la lista de eventos desde el backend
+  } catch (error) {
+    throw error.response?.data?.message || "Error al obtener eventos";
+  }
+};
+
+// Función para crear un nuevo evento
+export const crearEvento = async (evento) => {
+  try {
+    const response = await api.post("/eventos", evento); // Ruta para crear un evento
+    return response.data; // Devuelve el evento creado o un mensaje de éxito
+  } catch (error) {
+    throw error.response?.data?.message || "Error al crear el evento";
+  }
+};
+
+// Función para actualizar un evento
+export const actualizarEvento = async (evento) => {
+  try {
+    const response = await api.put(`/eventos/${evento.eventoId}`, evento); // Ruta para actualizar un evento
+    return response.data; // Devuelve el evento actualizado o un mensaje de éxito
+  } catch (error) {
+    throw error.response?.data?.message || "Error al actualizar el evento";
+  }
+};
+
+// Función para eliminar un evento
+export const eliminarEvento = async (id) => {
+  try {
+    const response = await api.delete(`/eventos/${id}`); // Ruta para eliminar un evento
+    return response.data; // Devuelve un mensaje de éxito
+  } catch (error) {
+    throw error.response?.data?.message || "Error al eliminar el evento";
+  }
+};
