@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { verificarRol } from "../../utils/authUtils"; // Función para verificar el rol
+import { verificarRol } from "../../utils/authUtils";
 import { ServicioEventos } from "../../servicios/ServicioEventos";
 import { ServicioNoticias } from "../../servicios/ServicioNoticias";
 import Container from "react-bootstrap/Container";
@@ -19,37 +19,35 @@ const InicioAdmin = () => {
   const [news, setNews] = useState([]);
   const [showEventoForm, setShowEventoForm] = useState(false);
   const [showNoticiaForm, setShowNoticiaForm] = useState(false);
-  const [tienePermiso, setTienePermiso] = useState(true); // Para verificar permisos
+  const [tienePermiso, setTienePermiso] = useState(true);
   const [mensaje, setMensaje] = useState("");
+  const [refresh, setRefresh] = useState(false); // Nuevo estado para actualizar los datos
   const navigate = useNavigate();
 
-  const servicioEventos = new ServicioEventos();
-  const servicioNoticias = new ServicioNoticias();
+  const servicioEventos = useMemo(() => new ServicioEventos(), []);
+  const servicioNoticias = useMemo(() => new ServicioNoticias(), []);
 
-  useEffect(() => {
-    // Verificar si el usuario tiene el rol ADMIN
-    if (!verificarRol("ADMIN")) {
-      setTienePermiso(false);
-      setMensaje("No tienes permisos para acceder a esta página.");
-      setTimeout(() => navigate("/login"), 3000); // Redirige al login después de 3 segundos
-      return;
+useEffect(() => {
+  if (!verificarRol("ADMIN")) {
+    setTienePermiso(false);
+    setMensaje("No tienes permisos para acceder a esta página.");
+    setTimeout(() => navigate("/login"), 3000);
+    return;
+  }
+
+  const fetchData = async () => {
+    try {
+      const eventosData = await servicioEventos.getAll();
+      setEvents(eventosData.data);
+      const noticiasData = await servicioNoticias.getAll();
+      setNews(noticiasData.data);
+    } catch (error) {
+      setMensaje("Error al cargar los datos. Inténtalo nuevamente.");
     }
+  };
 
-    // Cargar eventos y noticias
-    const fetchData = async () => {
-      try {
-        const eventosData = await servicioEventos.getAll();
-        setEvents(eventosData.data);
-        const noticiasData = await servicioNoticias.getAll();
-        setNews(noticiasData.data);
-      } catch (error) {
-        setMensaje("Error al cargar los datos. Inténtalo nuevamente.");
-      }
-    };
-
-    fetchData();
-  }, [navigate, servicioEventos, servicioNoticias]);
-
+  fetchData();
+}, [navigate, refresh]); 
   if (!tienePermiso) {
     return (
       <div className="no-access-container">
@@ -59,16 +57,6 @@ const InicioAdmin = () => {
     );
   }
 
-  const handleShowEventoForm = () => {
-    setShowEventoForm(true);
-    setShowNoticiaForm(false);
-  };
-
-  const handleShowNoticiaForm = () => {
-    setShowNoticiaForm(true);
-    setShowEventoForm(false);
-  };
-
   const handleCloseForm = () => {
     setShowEventoForm(false);
     setShowNoticiaForm(false);
@@ -77,40 +65,31 @@ const InicioAdmin = () => {
   const handleAddEvento = async (nuevoEvento) => {
     try {
       await servicioEventos.crearEvento(nuevoEvento);
-      alert("Evento creado con éxito");
-  
-      // Recargar la lista de eventos
-      const updatedEvents = await servicioEventos.getAll();
-      setEvents(updatedEvents.data);
+      setRefresh(prev => !prev); // Forzar actualización de la lista
     } catch (error) {
       console.error("Error al crear el evento:", error);
-      alert("Hubo un error al crear el evento");
+      alert("Hubo un error al crear el evento.");
     }
   };
   
-const handleUpdateEvento = async (eventoActualizado) => {
-  try {
-    await servicioEventos.actualizarEvento(eventoActualizado);
-    alert("Evento actualizado con éxito");
 
-    // Recargar la lista de eventos
-    const updatedEvents = await servicioEventos.getAll();
-    setEvents(updatedEvents.data);
-  } catch (error) {
-    console.error("Error al actualizar el evento:", error);
-    alert("Hubo un error al actualizar el evento");
-  }
-};
+  const handleUpdateEvento = async (eventoActualizado) => {
+    try {
+      await servicioEventos.actualizarEvento(eventoActualizado);
+      alert("Evento actualizado con éxito");
+      setRefresh(prev => !prev); // Forzar actualización
+    } catch (error) {
+      console.error("Error al actualizar el evento:", error);
+      alert("Hubo un error al actualizar el evento");
+    }
+  };
 
   const handleDeleteEvento = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar este evento?")) {
       try {
         await servicioEventos.eliminarEvento(id);
         alert("Evento eliminado con éxito");
-
-        // Recargar la lista de eventos
-        const updatedEvents = await servicioEventos.getAll();
-        setEvents(updatedEvents.data);
+        setRefresh(prev => !prev); // Forzar actualización
       } catch (error) {
         console.error("Error al eliminar el evento:", error);
         alert("Hubo un error al eliminar el evento");
@@ -118,14 +97,12 @@ const handleUpdateEvento = async (eventoActualizado) => {
     }
   };
 
-  
   const handleDeleteNoticia = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar esta noticia?")) {
       try {
         await servicioNoticias.deleteNoticia(id);
         alert("Noticia eliminada con éxito");
-        const updatedNews = await servicioNoticias.getAll();
-        setNews(updatedNews.data);
+        setRefresh(prev => !prev); // Forzar actualización
       } catch (error) {
         console.error("Error al eliminar la noticia:", error);
         alert("Hubo un error al eliminar la noticia");
@@ -148,7 +125,6 @@ const handleUpdateEvento = async (eventoActualizado) => {
           events.map((event) => (
             <div key={event.eventoId} className="card-container">
               <CardComponent
-                key={event.eventoId}
                 title={event.nombre}
                 fechaInicio={event.fechaInicio}
                 fechaFin={event.fechaFin}
@@ -158,7 +134,7 @@ const handleUpdateEvento = async (eventoActualizado) => {
               <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
                 <CardUpdate
                   tipoFormulario="evento"
-                  onUpdate={() => servicioEventos.getAll()}
+                  onUpdate={handleUpdateEvento}
                   existingData={event}
                 />
                 <button
@@ -180,7 +156,11 @@ const handleUpdateEvento = async (eventoActualizado) => {
             </div>
           ))}
 
-        <CardPlus onAgregarEvento={() => servicioEventos.getAll()} tipoFormulario="evento" />
+        <CardPlus 
+          onAgregarEvento={handleAddEvento} 
+          tipoFormulario="evento" 
+        />
+
 
         <Container className="titulos">
           <h2>Noticias</h2>
@@ -190,7 +170,6 @@ const handleUpdateEvento = async (eventoActualizado) => {
           news.map((news) => (
             <div key={news.noticiaId} className="card-container">
               <CardNews
-                key={news.noticiaId}
                 fechaPublicacion={news.fechaPublicacion}
                 title={news.titulo}
                 description={news.contenido}
@@ -199,7 +178,7 @@ const handleUpdateEvento = async (eventoActualizado) => {
               <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
                 <CardUpdate
                   tipoFormulario="noticia"
-                  onUpdate={() => servicioNoticias.getAll()}
+                  onUpdate={handleUpdateEvento}
                   existingData={news}
                 />
                 <button
@@ -221,9 +200,16 @@ const handleUpdateEvento = async (eventoActualizado) => {
             </div>
           ))}
 
-        <CardPlus onAgregarNoticia={() => servicioNoticias.getAll()} tipoFormulario="noticia" />
+        <CardPlus onAgregarEvento={handleAddEvento} tipoFormulario="evento" setRefresh={setRefresh} />
 
-        {showEventoForm && <FormEvento onCloseForm={handleCloseForm} />}
+        {showEventoForm && (
+          <FormEvento 
+            onAgregarEvento={(evento) => handleAddEvento(evento)}  
+            onCerrarFormulario={() => setShowEventoForm(false)} 
+            setRefresh={setRefresh} 
+          />
+        )}
+
         {showNoticiaForm && <FormNoticia onCloseForm={handleCloseForm} />}
         <LogoutButton />
       </div>
@@ -232,6 +218,7 @@ const handleUpdateEvento = async (eventoActualizado) => {
 };
 
 export default InicioAdmin;
+
 
 /*
 import React, { Component } from 'react';

@@ -3,7 +3,7 @@ import { Form, Button, Spinner } from "react-bootstrap";
 import { ServicioEventos } from "../../servicios/ServicioEventos";
 import ServicioImagenes from "../../servicios/ServicioImagenes";
 
-const FormEvento = ({ onSubmit, onClose, existingData }) => {
+const FormEvento = ({ onAgregarEvento, onCerrarFormulario, setRefresh, existingData }) => {
   const [evento, setEvento] = useState({
     nombre: "",
     fechaInicio: "",
@@ -71,30 +71,34 @@ const FormEvento = ({ onSubmit, onClose, existingData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
+    setLoading(true); // Mostrar el spinner mientras se procesa
+  
     try {
-      if (existingData) {
-        await handleUpdateEvento();
-      } else {
-        await handleCreateEvento();
-      }
-
-      // Limpiar formulario y cerrar modal
-      setEvento({ nombre: "", fechaInicio: "", fechaFin: "", descripcion: "" });
-      setArchivo(null);
-      setError(null);
-
-      // Llamar a onSubmit para actualizar la lista en la pantalla principal
-      onSubmit();
-      onClose();
+      const nuevoEvento = {
+        nombre: evento.nombre,
+        fechaInicio: evento.fechaInicio,
+        fechaFin: evento.fechaFin,
+        descripcion: evento.descripcion,
+        enlaceImagen: archivo ? await servicioImagenes.uploadImagen(archivo) : null,
+      };
+  
+      console.log("Enviando evento:", nuevoEvento);
+  
+      await onAgregarEvento(nuevoEvento);
+  
+      alert("Evento creado con éxito");
+  
+      /*setRefresh(prev => !prev);  // Actualizar la lista */
+      onCerrarFormulario();  // 🔚 Cerrar el formulario
     } catch (error) {
-      console.error("Error al procesar el evento:", error);
-      setError("Error al procesar el evento. Por favor, inténtalo de nuevo.");
+      console.error("Error en handleSubmit:", error);
+      alert("Hubo un error al crear el evento.");
     } finally {
-      setLoading(false);
+      setLoading(false); // Ocultar el spinner después de completar la solicitud
     }
   };
+  
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -136,12 +140,13 @@ const FormEvento = ({ onSubmit, onClose, existingData }) => {
               aria-hidden="true"
               className="mr-1"
             />
-            Cargando...
+            Creando...
           </>
         ) : (
           existingData ? "Actualizar Evento" : "Crear Evento"
         )}
       </Button>
+
     </form>
   );
 };

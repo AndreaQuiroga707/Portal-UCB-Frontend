@@ -16,6 +16,7 @@ const CardPlus = ({
   onAgregarSociedadCientifica, 
   onAgregarCentroInvestigacion, 
   onAgregarGrupoInvestigacion, 
+  setRefresh,
   tipoFormulario 
 }) => {
   const [showForm, setShowForm] = useState(false);
@@ -42,7 +43,12 @@ const CardPlus = ({
         </Modal.Header>
         <Modal.Body>
           {tipoFormulario === "evento" ? (
-            <FormEvento onSubmit={onAgregarEvento} onClose={handleClose} />
+            <FormEvento 
+            onAgregarEvento={onAgregarEvento} 
+            onCerrarFormulario={handleClose} 
+            setRefresh={setRefresh} 
+            />
+          
           ) : tipoFormulario === "noticia" ? (
             <FormNoticia onSubmit={onAgregarNoticia} onClose={handleClose} />
           ) : tipoFormulario === "InstitutoInvestigacion" ? (
