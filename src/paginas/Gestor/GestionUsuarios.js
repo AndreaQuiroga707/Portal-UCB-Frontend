@@ -71,7 +71,13 @@ const GestionUsuarios = () => {
                   <td>{usuario.rol?.nombre || "Sin rol"}</td>
                   <td>{usuario.estado}</td>
                   <td>
-                    <button className="edit-button">Editar</button>
+                  <button
+                    className="edit-button"
+                    onClick={() => navigate(`/editar-usuario/${usuario.usuarioId}`)}
+                  >
+                    Editar
+                  </button>
+
                     <button className="delete-button">Eliminar</button>
                   </td>
                 </tr>
