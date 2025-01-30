@@ -16,13 +16,32 @@ const CrearCuenta = () => {
   const [tienePermiso, setTienePermiso] = useState(true); // Estado para verificar permisos
   const navigate = useNavigate();
 
-  useEffect(() => {
+
+    useEffect(() => {
+        // Verificar si el usuario tiene permisos
+        if (!verificarRol("GESTOR DE USUARIOS")) {
+          setTienePermiso(false); // No tiene permiso
+          setMensaje("No tienes permisos para acceder a esta página.");
+          setTimeout(() => navigate("/login"), 3000); // Redirige al login después de 3 segundos
+          return;
+        };
+      }, [navigate]);
+      if (!tienePermiso) {
+        // Si no tiene permiso, solo muestra el mensaje de acceso denegado
+        return (
+          <div className="no-access-container">
+            <h1>{mensaje}</h1>
+            <p>Redirigiendo al login...</p>
+          </div>
+        );
+      }
+  /*useEffect(() => {
     // Verificar si el usuario tiene permisos
     if (!verificarRol("GESTOR DE USUARIOS")) {
       setTienePermiso(false); // No tiene permiso
       setTimeout(() => navigate("/login"), 3000); // Redirige al login después de 3 segundos
     }
-  }, [navigate]);
+  }, [navigate]);*/
 
   const validateInstitutionEmail = (email) => {
     return email.endsWith("@ucb.edu.bo");

@@ -29,9 +29,14 @@ export class ServicioEventos {
   
 
   actualizarEvento(evento) {
-    return axios.put(`${this.baseUrl}${evento.eventoId}`, evento, { headers: this.getAuthHeader() })
-      .then((res) => res.data);
+    const token = localStorage.getItem("token");
+    return axios.put(
+      `http://localhost:8080/api/v1/eventos/`, // ✅ Sin ID en la URL
+      evento,
+      { headers: { Authorization: `Bearer ${token}` } }
+    ).then(res => res.data);
   }
+  
 
   eliminarEvento(id) {
     return axios.delete(`${this.baseUrl}${id}`, { headers: this.getAuthHeader() })
