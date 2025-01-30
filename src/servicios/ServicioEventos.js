@@ -31,7 +31,7 @@ export class ServicioEventos {
   actualizarEvento(evento) {
     const token = localStorage.getItem("token");
     return axios.put(
-      `http://localhost:8080/api/v1/eventos/`, // ✅ Sin ID en la URL
+      `http://localhost:8080/api/v1/eventos/`, // Sin ID en la URL
       evento,
       { headers: { Authorization: `Bearer ${token}` } }
     ).then(res => res.data);
