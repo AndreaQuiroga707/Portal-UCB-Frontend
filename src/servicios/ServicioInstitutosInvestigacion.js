@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export class ServicioInstitutosInvestigacion {
-    baseUrl = "http://localhost:8080/api/v1/";
+    baseUrl = "https://portal-ucb-backend.onrender.com/api/v1/";
 
     getToken() {
         return localStorage.getItem("token"); // Ajusta esto según cómo almacenas el token
@@ -36,7 +36,7 @@ export class ServicioInstitutosInvestigacion {
 /*import axios from "axios";
 
 export class ServicioInstitutosInvestigacion {
-    baseUrl = "http://localhost:8080/api/v1/";
+    baseUrl = "https://portal-ucb-backend.onrender.com/api/v1/";
     
     getAll() {
         return axios.get(this.baseUrl + "institutos/investigacion/").then(res => res.data);

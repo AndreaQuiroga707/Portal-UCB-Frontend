@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export class ServicioEventos {
-  baseUrl = "http://localhost:8080/api/v1/eventos/";
+  baseUrl = "https://portal-ucb-backend.onrender.com/api/v1/eventos/";
 
   getAuthHeader() {
     const token = localStorage.getItem("token");
@@ -31,7 +31,7 @@ export class ServicioEventos {
   actualizarEvento(evento) {
     const token = localStorage.getItem("token");
     return axios.put(
-      `http://localhost:8080/api/v1/eventos/`, // Sin ID en la URL
+      `https://portal-ucb-backend.onrender.com/api/v1/eventos/`, // Sin ID en la URL
       evento,
       { headers: { Authorization: `Bearer ${token}` } }
     ).then(res => res.data);
