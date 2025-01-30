@@ -33,6 +33,8 @@ const Login = () => {
       // Redirigir según el rol
       if (userRole === "ADMIN") {
         navigate("/admin");
+      } else if (userRole === "ADMIN2") {
+        navigate("/admin/investigacion");
       } else if (userRole === "GESTOR DE USUARIOS") {
         navigate("/gestor/usuarios");
       } else {

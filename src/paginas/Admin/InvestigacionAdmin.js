@@ -23,7 +23,7 @@ const InvestigacionAdmin = () => {
   const servicioInstitutos = useMemo(() => new ServicioInstitutosInvestigacion(), []);
 
   useEffect(() => {
-    if (!verificarRol("ADMIN")) {
+    if (!verificarRol("ADMIN2")) {
       setTienePermiso(false);
       setMensaje("No tienes permisos para acceder a esta página.");
       setTimeout(() => navigate("/login"), 3000);
