@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ServicioImagenes {
-  baseUrl = 'http://localhost:8080/api/v1/';
+  baseUrl = 'https://portal-ucb-backend.onrender.com/api/v1/';
 
   uploadImagen = async (file) => {
     try {

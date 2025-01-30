@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Configuración de Axios
 const api = axios.create({
-  baseURL: "http://localhost:8080/api/v1/usuario", // URL base de las APIs
+  baseURL: "https://portal-ucb-backend.onrender.com/api/v1/usuario", // URL base de las APIs
 });
 
 api.interceptors.request.use((config) => {

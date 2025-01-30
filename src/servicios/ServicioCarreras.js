@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export class ServicioCarreras {
-    baseUrl = "http://localhost:8080/api/v1/";
+    baseUrl = "https://portal-ucb-backend.onrender.com/api/v1/";
 
     getCarreraPorId(carreraId) {
         return axios.get(`${this.baseUrl}carreras/${carreraId}`)
