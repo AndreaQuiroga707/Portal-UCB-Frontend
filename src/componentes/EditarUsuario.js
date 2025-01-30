@@ -91,7 +91,7 @@ const EditarUsuario = () => {
           <label htmlFor="rol">Rol:</label>
           <select id="rol" name="rol" value={usuario.rol?.rolId || ""} onChange={handleRolChange}>
             <option value="1">ADMIN</option>
-            <option value="2">GESTOR DE USUARIOS</option>
+            <option value="2">ADMIN2</option>
           </select>
         </div>
         <button type="submit" className="save-button">Guardar Cambios</button>

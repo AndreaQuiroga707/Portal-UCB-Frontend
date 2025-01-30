@@ -169,7 +169,7 @@ const CrearCuenta = () => {
             >
               <option value="">Seleccionar un rol</option>
               <option value="ADMIN">ADMIN</option>
-              <option value="GESTOR DE USUARIOS">GESTOR DE USUARIOS</option>
+              <option value="ADMIN2">ADMIN2</option>
             </select>
           </div>
           <button type="submit" className="botonLogin">Registrar</button>
