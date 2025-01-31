@@ -37,7 +37,6 @@ class Inicio extends Component {
     });
 
     this.servicioNoticias.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ news: data.data });
     });
     this.servicioFacultades.getAll().then((response) => {
@@ -78,7 +77,6 @@ class Inicio extends Component {
   }
 
   render() {
-    console.log("Estado actual:", this.state);
     return (
       <div className="App">
         <NavbarComponent className="navbar" />

@@ -53,7 +53,6 @@ class Inicio extends Component {
     });
 
     this.servicioNoticias.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ news: data.data });
     });
     this.servicioFacultades.getAll().then((response) => {
@@ -147,7 +146,6 @@ class Inicio extends Component {
     this.servicioSuscripcion.postSuscripcion(correo)
       .then(response => {
         // Maneja la respuesta según tus necesidades
-        console.log("Suscripción exitosa:", response);
       })
       .catch(error => {
         // Maneja el error según tus necesidades
@@ -166,7 +164,6 @@ class Inicio extends Component {
     this.servicioSuscripcion.deleteSuscripcionByCorreo(correo)
       .then(response => {
         // Maneja la respuesta según tus necesidades
-        console.log("Desuscripción exitosa:", response);
       })
       .catch(error => {
         // Maneja el error según tus necesidades

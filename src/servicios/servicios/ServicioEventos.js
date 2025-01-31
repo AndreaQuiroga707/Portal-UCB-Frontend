@@ -5,6 +5,7 @@ export class ServicioEventos {
 
   getAuthHeader() {
     const token = localStorage.getItem("token");
+    console.log("Token usado en solicitud:", token); // 🔍 Verifica si es el mismo que funciona en Postman
     return { 
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"  // 🔹 Asegura que el backend lo reciba correctamente

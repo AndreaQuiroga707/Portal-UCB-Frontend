@@ -27,22 +27,18 @@ class InvestigacionAdmin extends Component {
 
   componentDidMount() {
     this.servicioInstitutosInvestigacion.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ researchItems: data.data });
     });
 
     this.servicioSociedadesCientificas.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ cientistSocieties: data.data });
     });
 
     this.servicioCentrosInvestigacion.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ researchCenters: data.data });
     });
 
     this.servicioGruposInvestigacion.getAll().then((data) => {
-      console.log(data.data);
       this.setState({ researchGroups: data.data });
     });
   }

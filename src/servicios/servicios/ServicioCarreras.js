@@ -6,6 +6,7 @@ export class ServicioCarreras {
     getCarreraPorId(carreraId) {
         return axios.get(`${this.baseUrl}carreras/${carreraId}`)
             .then(res => {
+                console.log("Respuesta de carrera por ID", carreraId, res.data);
                 return res.data;
             });
     }
@@ -17,6 +18,7 @@ export class ServicioCarreras {
     getCarrerasPorFacultad(facultadId) {
         return axios.get(`${this.baseUrl}carreras/facultad/${facultadId}`)
             .then(res => {
+                console.log("Respuesta de carreras para facultad", facultadId, res.data);
                 return res.data;
             });
     }

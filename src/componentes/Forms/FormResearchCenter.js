@@ -94,9 +94,7 @@ const FormResearchCenter = ({ onAgregarCentroInvestigacion, onCerrarFormulario, 
           enlaceImagen,
         });
       } else {
-        console.log('ID de Carrera:', carreraId);
-        console.log('ID de Contacto:', contactoId);
-
+       
         await servicioCentrosInvestigacion.postCentroInvestigacion({
           nombre,
           enlaceWeb,

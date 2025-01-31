@@ -20,6 +20,8 @@ import LoginPage from "./paginas/LoginPage"; // Página de login
 import GestionUsuarios from './paginas/Gestor/GestionUsuarios';
 import CrearCuenta from './paginas/Gestor/CrearCuenta';
 import EditarUsuario from "./componentes/EditarUsuario";
+import LogsDashboard from './paginas/Gestor/LogDashboard';
+
 
 function App() {
   return (
@@ -68,6 +70,8 @@ function App() {
          {/* Rutas específicas del Gestor */}
         <Route path="/gestor/usuarios" element={<GestionUsuarios />} />
         <Route path="/gestor/crear-cuenta" element={<CrearCuenta />} />
+        <Route path="/gestor/logs" element={<LogsDashboard />} />
+
       </Routes>
 
       <FooterComponent />

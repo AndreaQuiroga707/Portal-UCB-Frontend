@@ -38,7 +38,6 @@ const EditarUsuario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Datos enviados al backend:", usuario); // Para depuración
       await updateUsuario(usuario); // Llamada al backend para actualizar el usuario
       setMensaje("Usuario actualizado con éxito.");
       setTimeout(() => navigate("/gestor/usuarios"), 500); // Redirigir después de 2 segundos
@@ -143,7 +142,6 @@ const EditarUsuario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Datos enviados al backend:", usuario); // Verifica el objeto enviado
       await updateUsuario(usuario); // Llamada al backend para actualizar el usuario
       setMensaje("Usuario actualizado con éxito.");
       setTimeout(() => navigate("/gestor/usuarios"), 2000); // Redirigir después de 2 segundos

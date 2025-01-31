@@ -28,14 +28,14 @@ function NavbarGestor() {
           {/* Enlaces del Navbar */}
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {/* Página principal del Gestor */}
               <Nav.Link as={Link} to="/gestor/usuarios" className="navbar-link" onClick={() => setExpanded(false)}>
                 Gestión de Usuarios
               </Nav.Link>
-
-              {/* Página para la creación de cuentas */}
               <Nav.Link as={Link} to="/gestor/crear-cuenta" className="navbar-link" onClick={() => setExpanded(false)}>
                 Crear Cuenta
+              </Nav.Link>
+              <Nav.Link as={Link} to="/gestor/logs" className="navbar-link" onClick={() => setExpanded(false)}>
+                Logs
               </Nav.Link>
             </Nav>
 

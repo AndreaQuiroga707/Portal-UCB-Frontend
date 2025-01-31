@@ -4,9 +4,7 @@ import { ServicioEventos } from "../../servicios/ServicioEventos";
 import ServicioImagenes from "../../servicios/ServicioImagenes";
 
 const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, existingData }) => {
-  console.log("📌 Props recibidos en FormEvento:", { onAgregarEvento, onActualizarEvento, onCerrarFormulario });
-
- 
+   
   const [evento, setEvento] = useState(() => ({
     eventoId: existingData?.eventoId || null, // Se mantiene nulo si es creación
     nombre: existingData?.nombre || "",
@@ -24,7 +22,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
   const servicioImagenes = new ServicioImagenes();
 
   useEffect(() => {
-    console.log("📌 existingData recibido en FormEvento:", existingData);
     if (existingData) {
       setEvento(existingData);
     }
@@ -47,8 +44,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
     try {
       let enlaceImagen = existingData ? existingData.enlaceImagen : null;
 
-      console.log("📌 onActualizarEvento recibido en FormEvento:", onActualizarEvento);
-
       if (archivo) {
         enlaceImagen = await servicioImagenes.uploadImagen(archivo);
       }
@@ -64,7 +59,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
           enlaceImagen,
         };
 
-        console.log("🛠️ Enviando actualización:", eventoActualizado);
         await servicioEventos.actualizarEvento(eventoActualizado);
     
         if (typeof onActualizarEvento === "function") {
@@ -85,8 +79,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
           descripcion: evento.descripcion,
           enlaceImagen,
         };
-
-        console.log("📤 Enviando nuevo evento:", nuevoEvento);
         await onAgregarEvento(nuevoEvento);
         alert("✅ Evento creado con éxito");
       }
@@ -96,9 +88,7 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
         onCerrarFormulario();
       } else {
         console.warn("⚠️ `onCerrarFormulario` no está definido correctamente.");
-        console.log("📌 onCerrarFormulario recibido en FormEvento:", onCerrarFormulario);
-
-        
+       
       }
       
 
@@ -232,7 +222,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
     try {
       if (existingData) {
         // 🛠️ Actualizando evento
-        console.log("🛠️ Actualizando evento:", existingData);
 
         let enlaceImagen = existingData.enlaceImagen; // Mantener imagen actual si no se sube una nueva
 
@@ -261,7 +250,6 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
           enlaceImagen: archivo ? await servicioImagenes.uploadImagen(archivo) : null,
         };
 
-        console.log("📤 Enviando nuevo evento:", nuevoEvento);
         await onAgregarEvento(nuevoEvento);
         alert("✅ Evento creado con éxito");
       }
@@ -296,9 +284,7 @@ const FormEvento = ({ onAgregarEvento, onActualizarEvento, onCerrarFormulario, e
         descripcion: evento.descripcion,
         enlaceImagen: archivo ? await servicioImagenes.uploadImagen(archivo) : null,
       };
-  
-      console.log("Enviando evento:", nuevoEvento);
-  
+    
       await onAgregarEvento(nuevoEvento);
   
       alert("Evento creado con éxito");

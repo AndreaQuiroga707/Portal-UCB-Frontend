@@ -87,8 +87,6 @@ const CrearCuenta = () => {
         rol,
       };
   
-      console.log("Datos enviados al backend:", datosUsuario); // Log para verificar
-  
       // Enviar los datos al backend
       await signIn(datosUsuario);
   
